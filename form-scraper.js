@@ -13,7 +13,7 @@ _.extend(ScrapingFormProvider, {
       .then(fetchFormDataFromHttpResponse);
 
     function fetchFormDataFromHttpResponse(response) {
-      $ = cheerio.load(response.body);
+      $ = response.body?cheerio.load(response.body):cheerio.load(response);
       var formDom = $(formId);
 
       if (isFormAbsent(formDom))
